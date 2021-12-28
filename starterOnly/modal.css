@@ -17,7 +17,6 @@ body {
   background-image: url("background.png");
   font-family: var(--font-default);
   font-size: 18px;
-  max-width: 1300px;
   margin: 0 auto;
 }
 
@@ -32,10 +31,14 @@ img {
 
 .topnav {
   overflow: hidden;
-  margin: 3.5%;
+  margin: 3.3%;
 }
 .header-logo {
     float: left;
+}
+.header-logo img{
+  width: auto;
+  height: auto;
 }
 .main-navbar {
     float: right;
@@ -55,28 +58,30 @@ img {
 .topnav a:hover {
   background-color: #ff0000;
   color: #ffffff;
-  border-radius: 15px;
+  border-radius: 10px;
+  text-decoration: underline;
 }
 
-.topnav a.active {
+/* .topnav a.active {
+  text-decoration: underline;
   background-color: #ff0000;
   color: #ffffff;
-  border-radius: 15px;
-}
+  border-radius: 10px;
+} */
 
 .topnav .icon {
   display: none;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
   .topnav a {display: none;}
   .topnav a.icon {
+    color: red;
+    font-size: 1.7rem;
     float: right;
     display: block;
   }
-}
 
-@media screen and (max-width: 768px) {
   .topnav.responsive {position: relative;}
   .topnav.responsive .icon {
     position: absolute;
@@ -89,18 +94,6 @@ img {
     text-align: left;
   }
 }
-
-
-
- @media screen and (max-width: 540px) {
-  .topnav a {display: none;}
-  .topnav a.icon {
-    float: right;
-    display: block;
-    margin-top: -15px;
-  }
-} 
-
 main {
   font-size: 130%;
   font-weight: bolder;
@@ -166,7 +159,7 @@ main {
   height: 100%;
   width: 100%;
   overflow: auto;
-  background-color: rgba(26, 39, 156, 0.4);
+  background-color: white;
 }
 
 .content {
@@ -443,10 +436,11 @@ input[data-error]::after {
 .hero-text {
   width: 146%;
   font-weight: normal;
-  margin-top: 57px;
+  margin-top: 25px;
   padding: 0;
 }
 .btn-signup {
+  transition: 2s;
   outline: none;
   text-transform: capitalize;
   font-size: 1.3rem;
@@ -458,6 +452,7 @@ input[data-error]::after {
   grid-column: span 8;
 }
 .hero-img img {
+  object-fit: cover;
   width: 100%;
   height: 100%;
   display: block;
@@ -478,7 +473,38 @@ footer {
   padding-right: 2vw;
   margin: 0 20px;
 }
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 998px) {
+
+  .topnav a{
+    font-size: 15px;
+  }
+  .header-logo{
+    height: 41px;
+    display: flex;
+    align-items: center;
+  }
+  .header-logo img{
+    height: 30px;
+    padding: 0;
+  }
+  .hero-headline{
+    font-size: 2.5rem;
+  }
+  .hero-content::after{
+    right: -40px;
+  }
+}
+@media screen and (max-width: 767px) {
+  
+  .topnav{
+    display: flex;
+    margin: 4% 7%;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .header-logo img{
+    height: 23px;
+  }
   .hero-section {
     display: block;
     box-shadow: unset;
@@ -486,7 +512,8 @@ footer {
   .hero-content {
     background: #fff;
     color: #000;
-    padding: 20px;
+    min-width: 0;
+    padding: 0;
   }
   .hero-content::after {
     content: unset;
@@ -495,12 +522,14 @@ footer {
     display: none;
   }
   .hero-headline {
-    font-size: 4.5rem;
+    font-weight: bold;
+    font-family: var(--font-default);
+    font-size: 2.3rem;
     white-space: normal;
   }
   .hero-text {
     width: unset;
-    font-size: 1.5rem;
+    font-size: 0.8rem;
   }
   .hero-img img {
     border-radius: 10px;
@@ -512,8 +541,11 @@ footer {
     padding: 12px 35px;
   }
   .copyrights {
-    margin-top: 50px;
+    margin-top: 25px;
     text-align: center;
+  }
+  main{
+    margin: 1px 20px 0px;
   }
 }
 
