@@ -14,7 +14,7 @@ body {
   margin: 0;
   display: flex;
   flex-direction: column;
-  background-image: url("background.png");
+  /* background-image: url("background.png"); */
   font-family: var(--font-default);
   font-size: 18px;
   margin: 0 auto;
@@ -472,6 +472,86 @@ footer {
   padding-left: 2vw;
   padding-right: 2vw;
   margin: 0 20px;
+}
+.checkbox-ville{
+  display: none;
+}
+
+.checkbox-ville:checked + .checkbox-label .checkbox-icon::after,
+.checkbox-ville:checked + .checkbox2-label .checkbox-icon::after {
+  opacity: 1;
+}
+.checkbox-ville:checked + .checkbox2-label .checkbox-icon {
+  background: #279e7a;
+}
+
+
+
+/* Message d erreur */
+.condition-error{
+ font-size: 0.8rem;
+ color: #f00;
+ display: none;
+}
+.style-error{
+ font-size: 0.8rem;
+ color: #f00;
+ display: none;
+}
+.name-error{
+  font-size: 0.8rem;
+ color: #f00;
+ display: none;
+}
+.message-adresse{
+  font-size: 0.8rem;
+ color: #f00;
+ display: none;
+}
+.Date-Birth{
+  font-size: 0.8rem;
+ color: #f00;
+ display: none;
+}
+.city-error{
+  font-size: 0.8rem;
+  color: #f00;
+  display: none;
+}
+.border-red{
+  border:2px solid red;
+}
+.bordergreen{
+  border: 3px solid green;
+  transition: 200ms;
+}
+.content-validation{
+    display: none;
+    position: fixed;
+    z-index: 3;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    background-color: white;
+}
+.content-message{
+  height: 90%;
+   margin: 5% auto;
+    width: 100%;
+    max-width: 500px;
+    animation-name: modalopen;
+    animation-duration: var(--modal-duration);
+    background: #232323;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    color: #fff;
+    padding-top: 24%;
+}
+.message-validation{
+  font-size: 2rem;
 }
 @media screen and (max-width: 998px) {
 
