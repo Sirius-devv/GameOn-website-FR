@@ -27,7 +27,20 @@ const radioError = document.querySelector(".city-error");
 const conditionError = document.querySelector(".condition-error");
 const formValidation = document.querySelector("#formvalidation");
 
-const closeform = document.querySelector(".close")
+
+const submitValidation = document.querySelector(".open-validation")
+const messageValidation = document.querySelector(".content-validation")
+
+
+
+const radio = document.getElementById("location1");
+const radio2 = document.getElementById("location2");
+const radio3 = document.getElementById("location3");
+const radio4 = document.getElementById("location4");
+const radio5 = document.getElementById("location5");
+const radio6 = document.getElementById("location6");
+
+const closeform = document.querySelector(".close");
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -37,12 +50,8 @@ function launchModal() {
   modalbg.style.display = "block";
 }
 
-
-
 formValidation.addEventListener("submit", (e) => {
-  // console.log(checkbox1.checked);
-
- 
+  
 
   if (prenomInput.value.length <= 1) {
     e.preventDefault();
@@ -71,6 +80,7 @@ formValidation.addEventListener("submit", (e) => {
     emailInput.classList.add("bordergreen");
   }
   if (emailInput.value.length <= 5) {
+    e.preventDefault();
     emailErorr.style.display = "block";
     emailInput.classList.remove("bordergreen");
   }
@@ -91,6 +101,7 @@ formValidation.addEventListener("submit", (e) => {
     dateNaissance.value === null ||
     dateNaissance.value === 0
   ) {
+    e.preventDefault();
     dateErorr.style.display = "block";
     dateNaissance.classList.remove("bordergreen");
   }
@@ -99,27 +110,53 @@ formValidation.addEventListener("submit", (e) => {
     dateNaissance.classList.add("bordergreen");
   }
 
-  let radio = document.getElementById("location1");
-  let radio2 = document.getElementById("location2");
-  let radio3 = document.getElementById("location3");
-  let radio4 = document.getElementById("location4");
-  let radio5 = document.getElementById("location5");
-  let radio6 = document.getElementById("location6");
-
-  if (radio.checked != null || radio2.checked != null || radio3.checked != null || radio4.checked != null || radio5.checked != null || radio6.checked != null) {
-    radioError.style.display = "block";
-  }
-  if (radio.checked || radio2.checked  || radio3.checked || radio4.checked  || radio5.checked  || radio6.checked ) {
+  if (
+    radio.checked ||
+    radio2.checked ||
+    radio3.checked ||
+    radio4.checked ||
+    radio5.checked ||
+    radio6.checked
+  ) {
     radioError.style.display = "none";
-    console.log("checked");
-  } 
+    console.log("checked ville");
+  } else {
+    e.preventDefault();
+    radioError.style.display = "block";
+    console.log("pas check ville");
+  }
   if (checkbox1.checked) {
     conditionError.style.display = "none";
   } else {
+    e.preventDefault();
     conditionError.style.display = "block";
+    console.log("faux");
   }
+  
+  
+  if (prenomInput.value.length >= 2 && nameInput.value.length >= 2 && emailInput.value.length >= 5 && tournois.value.length >= 0  && dateNaissance.value.length >= 1 && checkbox1.checked && (radio.checked || radio2.checked || radio3.checked || radio4.checked || radio5.checked || radio6.checked)){
+         messageValidation.style.display = "block"
+         console.log("validate");
+         e.preventDefault();
+        
+     }
+    
+    
+  
 });
 
-closeform.addEventListener("click" , () =>{
-  modalbg.style.display ="none"
-})
+closeform.addEventListener("click", () => {
+  modalbg.style.display = "none";
+});
+
+// submitValidation.addEventListener("click", () => {
+//   if (prenomInput.value.length >= 2 && nameInput.value.length >= 2 && emailInput.value.length >= 5 && tournois.value.length >= 0  && dateNaissance.value.length >= 1 && checkbox1.checked && (radio.checked || radio2.checked || radio3.checked || radio4.checked || radio5.checked || radio6.checked)){
+//     messageValidation.style.display = "block"
+//     console.log("lllll");
+    
+// }
+// else{
+//   console.log("false");
+  
+// }
+// });
