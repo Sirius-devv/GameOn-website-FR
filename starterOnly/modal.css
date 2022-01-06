@@ -41,7 +41,10 @@ img {
   height: auto;
 }
 .main-navbar {
+    display: flex;
     float: right;
+    flex-direction: column-reverse;
+    align-items: flex-end;
 }
 .topnav a {
   float: left;
@@ -71,6 +74,11 @@ img {
 
 .topnav .icon {
   display: none;
+  color: red;
+}
+.topnav .icon:hover{
+  color: white;
+  background: red;
 }
 
 @media screen and (max-width: 767px) {
@@ -82,9 +90,12 @@ img {
     display: block;
   }
 
-  .topnav.responsive {position: relative;}
+  .topnav.responsive
+   {position: relative;
+    align-items: flex-start;
+    
+  }
   .topnav.responsive .icon {
-    position: absolute;
     right: 0;
     top: 0;
   }
@@ -548,11 +559,52 @@ footer {
     overflow: hidden;
     position: relative;
     color: #fff;
-    padding-top: 24%;
+   
 }
 .message-validation{
-  font-size: 2rem;
+    margin-bottom: 34vh;
+    margin-top: 32vh;
+    font-size: 2rem;
+    text-align: center;
 }
+.bouton-fermer{
+    cursor: pointer;
+    margin: 0 30%;
+    color: white;
+    background: #ff433d;
+    padding: 17px;
+    border: none;
+    outline: none;
+    border-radius: 28PX;
+    WIDTH: 38%;
+}
+.closevalidation{
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  width: 32px;
+  height: 32px;
+  opacity: 1;
+  cursor: pointer;
+  transform: scale(0.7);
+}
+.closevalidation:before,
+.closevalidation:after {
+  position: absolute;
+  left: 15px;
+  content: " ";
+  height: 33px;
+  width: 3px;
+  background-color: #fff;
+}
+.closevalidation:before {
+  transform: rotate(45deg);
+}
+.closevalidation:after {
+  transform: rotate(-45deg);
+}
+
+
 @media screen and (max-width: 998px) {
 
   .topnav a{
