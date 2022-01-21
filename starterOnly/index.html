@@ -20,13 +20,14 @@
         <img alt="logo" src="Logo.png" />
       </div>
       <div class="main-navbar">
-        <a href="#" class="active"><span>Détails de l'évènement</span></a>
-        <a href="#"><span>À propos</span></a>
-        <a href="#"><span>Contact</span></a>
-        <a href="#"><span>Évènements passés</span></a>
         <a href="javascript:void(0);" class="icon" onclick="editNav()">
           <i class="fa fa-bars"></i>
         </a>
+        <a href="#" class="active"><span>Accueil</span></a>
+        <a href="#" class="active"><span>Détails de l'évènement</span></a>
+        <a href="#"><span>À propos</span></a>
+        <a href="mailto:gameone@mail.fr"><span>Contact</span></a>
+        <a href="#"><span>Évènements passés</span></a>
       </div>
     </div>
     <main>
@@ -47,8 +48,23 @@
         </div>
         <button class="btn-signup modal-btn">je m'inscris</button>
       </div>
-
+      <!-- inscription -->
       <div class="bground">
+        <div class="topnav-mobile">
+          <div class="header-logo-mobile">
+            <img alt="logo" src="Logo.png" />
+          </div>
+          <div class="main-navbar-mobile">
+            <span class="icon" id="icon-mobile">
+              <i class="fa fa-bars"></i>
+            </span>
+            <a href="#" class="lien-mobile"><span>Accueil</span></a>
+            <a href="#" class="lien-mobile"><span>Détails de l'évènement</span></a>
+            <a href="#" class="lien-mobile"><span>À propos</span></a>
+            <a href="mailto:gameone@mail.fr" class="lien-mobile"><span>Contact</span></a>
+            <a href="#" class="lien-mobile"><span>Évènements passés</span></a>
+          </div>
+        </div>
         <div class="content">
           <span class="close"></span>
           <div class="modal-body">
@@ -217,7 +233,11 @@
                 </label>
                 <br />
               </div>
-              <input class="btn-submit open-validation" type="submit" value="C'est parti" />
+              <input
+                class="btn-submit open-validation"
+                type="submit"
+                value="C'est parti"
+              />
             </form>
           </div>
         </div>
@@ -225,8 +245,11 @@
       <div class="content-validation">
         <div class="content-message">
           <div class="closevalidation"></div>
-          <div class="message-validation">Merci pour <br> votre inscription</div>
-          <input type="submit" class="bouton-fermer" value="fermer">
+          <div class="message-validation">
+            Merci pour <br />
+            votre inscription
+          </div>
+          <input type="submit" class="bouton-fermer" value="fermer" />
         </div>
       </div>
     </main>

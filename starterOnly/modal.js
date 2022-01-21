@@ -17,7 +17,7 @@ const nameInput = document.querySelector("#last");
 const emailInput = document.querySelector("#email");
 const dateNaissance = document.querySelector("#birthdate");
 const tournois = document.querySelector("#quantity");
-
+// message error
 const messageError = document.querySelector(".style-error");
 const nameErorr = document.querySelector(".name-error");
 const emailErorr = document.querySelector(".message-adresse");
@@ -26,21 +26,24 @@ const gameError = document.querySelector(".game-error");
 const radioError = document.querySelector(".city-error");
 const conditionError = document.querySelector(".condition-error");
 const formValidation = document.querySelector("#formvalidation");
-
+// message validation
 const submitValidation = document.querySelector(".open-validation");
 const messageValidation = document.querySelector(".content-validation");
 const boutonValidation = document.querySelector(".bouton-fermer");
-const closeValidation = document.querySelector(".closevalidation")
-
+const closeValidation = document.querySelector(".closevalidation");
+// all radio
 const radio = document.getElementById("location1");
 const radio2 = document.getElementById("location2");
 const radio3 = document.getElementById("location3");
 const radio4 = document.getElementById("location4");
 const radio5 = document.getElementById("location5");
 const radio6 = document.getElementById("location6");
-
+// close validation
 const closeform = document.querySelector(".close");
-
+// mobile topnav
+const iconTopNavMobile = document.querySelector("#icon-mobile");
+const aTopNavMobile = document.querySelectorAll(".lien-mobile");
+console.log(aTopNavMobile);
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
@@ -48,8 +51,11 @@ modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 function launchModal() {
   modalbg.style.display = "block";
 }
-
+// form validation
 formValidation.addEventListener("submit", (e) => {
+  // all radio
+  let radiochecked = document.querySelector('input[name = "location"]:checked');
+
   if (prenomInput.value.length <= 1) {
     e.preventDefault();
     messageError.style.display = "block";
@@ -57,7 +63,6 @@ formValidation.addEventListener("submit", (e) => {
   }
   if (prenomInput.value.length >= 2) {
     prenomInput.classList.add("bordergreen");
-
     messageError.style.display = "none";
   }
 
@@ -87,7 +92,7 @@ formValidation.addEventListener("submit", (e) => {
     tournois.classList.add("bordergreen");
   }
 
-  if (tournois.value === "") {
+  if (tournois.value.length == "") {
     e.preventDefault();
     gameError.style.display = "block";
     tournois.classList.remove("bordergreen");
@@ -107,14 +112,7 @@ formValidation.addEventListener("submit", (e) => {
     dateNaissance.classList.add("bordergreen");
   }
 
-  if (
-    radio.checked ||
-    radio2.checked ||
-    radio3.checked ||
-    radio4.checked ||
-    radio5.checked ||
-    radio6.checked
-  ) {
+  if (radiochecked != null) {
     radioError.style.display = "none";
     console.log("checked ville");
   } else {
@@ -134,50 +132,34 @@ formValidation.addEventListener("submit", (e) => {
     prenomInput.value.length >= 2 &&
     nameInput.value.length >= 2 &&
     emailInput.value.length >= 5 &&
-    tournois.value.length >= 0 &&
+    (tournois.value === 0 ||
+      tournois.value.length >= 1 )&& 
     dateNaissance.value.length >= 1 &&
     checkbox1.checked &&
-    (radio.checked ||
-      radio2.checked ||
-      radio3.checked ||
-      radio4.checked ||
-      radio5.checked ||
-      radio6.checked)
+    radiochecked != null
   ) {
     messageValidation.style.display = "block";
     console.log("validate");
     e.preventDefault();
-    return true;
-    
   }
- 
-  
 });
-
+// fermeture de l inscription
 closeform.addEventListener("click", (e) => {
   modalbg.style.display = "none";
   console.log("0");
-  
 });
-boutonValidation.addEventListener("click" , () => {
+// fermeture de la validation
+boutonValidation.addEventListener("click", () => {
   modalbg.style.display = "none";
-  messageValidation.style.display = "none"
-})
-closeValidation.addEventListener("click" , () => {
+  messageValidation.style.display = "none";
+});
+closeValidation.addEventListener("click", () => {
   modalbg.style.display = "none";
-  messageValidation.style.display = "none"
-})
+  messageValidation.style.display = "none";
+});
 
-
-
-// submitValidation.addEventListener("click", () => {
-//   if (prenomInput.value.length >= 2 && nameInput.value.length >= 2 && emailInput.value.length >= 5 && tournois.value.length >= 0  && dateNaissance.value.length >= 1 && checkbox1.checked && (radio.checked || radio2.checked || radio3.checked || radio4.checked || radio5.checked || radio6.checked)){
-//     messageValidation.style.display = "block"
-//     console.log("lllll");
-
-// }
-// else{
-//   console.log("false");
-
-// }
-// });
+aTopNavMobile.forEach((lien) => {
+  iconTopNavMobile.addEventListener("click", () => {
+    lien.classList.toggle("display-block");
+  });
+});
