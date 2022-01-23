@@ -11,7 +11,8 @@ function editNav() {
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
-//
+const accueilOpen = document.querySelector(".accueil-open")
+// input
 const prenomInput = document.querySelector("#first");
 const nameInput = document.querySelector("#last");
 const emailInput = document.querySelector("#email");
@@ -31,19 +32,12 @@ const submitValidation = document.querySelector(".open-validation");
 const messageValidation = document.querySelector(".content-validation");
 const boutonValidation = document.querySelector(".bouton-fermer");
 const closeValidation = document.querySelector(".closevalidation");
-// all radio
-const radio = document.getElementById("location1");
-const radio2 = document.getElementById("location2");
-const radio3 = document.getElementById("location3");
-const radio4 = document.getElementById("location4");
-const radio5 = document.getElementById("location5");
-const radio6 = document.getElementById("location6");
+
 // close validation
 const closeform = document.querySelector(".close");
 // mobile topnav
 const iconTopNavMobile = document.querySelector("#icon-mobile");
 const aTopNavMobile = document.querySelectorAll(".lien-mobile");
-console.log(aTopNavMobile);
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
@@ -51,6 +45,8 @@ modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 function launchModal() {
   modalbg.style.display = "block";
 }
+// regexmail
+let regexmail = /^[a-zA-Z][a-zA-Z0-9\-\_\.]+@[a-zA-Z0-9]{2,}\.[a-zA-Z0-9]{2,}$/;
 // form validation
 formValidation.addEventListener("submit", (e) => {
   // all radio
@@ -58,32 +54,31 @@ formValidation.addEventListener("submit", (e) => {
 
   if (prenomInput.value.length <= 1) {
     e.preventDefault();
-    messageError.style.display = "block";
+    messageError.classList.add("display-block");
     prenomInput.classList.remove("bordergreen");
   }
   if (prenomInput.value.length >= 2) {
     prenomInput.classList.add("bordergreen");
-    messageError.style.display = "none";
+    messageError.classList.remove("display-block");
   }
 
   if (nameInput.value.length <= 1) {
     e.preventDefault();
-    nameErorr.style.display = "block";
+    nameErorr.classList.add("display-block");
     nameInput.classList.remove("bordergreen");
   }
 
   if (nameInput.value.length >= 2) {
-    nameErorr.style.display = "none";
+    nameErorr.classList.remove("display-block");
     nameInput.classList.add("bordergreen");
   }
 
-  if (emailInput.value.length >= 5) {
-    emailErorr.style.display = "none";
+  if (emailInput.value.match(regexmail)) {
+    emailErorr.classList.remove("display-block");
     emailInput.classList.add("bordergreen");
-  }
-  if (emailInput.value.length <= 5) {
+  } else {
     e.preventDefault();
-    emailErorr.style.display = "block";
+    emailErorr.classList.add("display-block");
     emailInput.classList.remove("bordergreen");
   }
 
@@ -104,58 +99,54 @@ formValidation.addEventListener("submit", (e) => {
     dateNaissance.value === 0
   ) {
     e.preventDefault();
-    dateErorr.style.display = "block";
+    dateErorr.classList.add("display-block");
     dateNaissance.classList.remove("bordergreen");
   }
   if (dateNaissance.value.length >= 1) {
-    dateErorr.style.display = "none";
+    dateErorr.classList.remove("display-block");
     dateNaissance.classList.add("bordergreen");
   }
 
   if (radiochecked != null) {
-    radioError.style.display = "none";
-    console.log("checked ville");
+    radioError.classList.remove("display-block");
   } else {
     e.preventDefault();
-    radioError.style.display = "block";
-    console.log("pas check ville");
+    radioError.classList.add("display-block");
   }
   if (checkbox1.checked) {
-    conditionError.style.display = "none";
+    conditionError.classList.remove("display-block");
   } else {
     e.preventDefault();
-    conditionError.style.display = "block";
-    console.log("faux");
+    conditionError.classList.add("display-block");
   }
 
   if (
     prenomInput.value.length >= 2 &&
     nameInput.value.length >= 2 &&
-    emailInput.value.length >= 5 &&
-    (tournois.value === 0 ||
-      tournois.value.length >= 1 )&& 
+    emailInput.value.match(regexmail) &&
+    (tournois.value === 0 || tournois.value.length >= 1) &&
     dateNaissance.value.length >= 1 &&
     checkbox1.checked &&
     radiochecked != null
   ) {
-    messageValidation.style.display = "block";
-    console.log("validate");
+    messageValidation.classList.add("display-block");
     e.preventDefault();
   }
 });
 // fermeture de l inscription
-closeform.addEventListener("click", (e) => {
+closeform.addEventListener("click", () => {
   modalbg.style.display = "none";
-  console.log("0");
 });
 // fermeture de la validation
 boutonValidation.addEventListener("click", () => {
-  modalbg.style.display = "none";
-  messageValidation.style.display = "none";
+  modalbg.classList.add("display-none");
+  messageValidation.classList.add("display-none");
+  location.reload();
 });
 closeValidation.addEventListener("click", () => {
   modalbg.style.display = "none";
   messageValidation.style.display = "none";
+  location.reload();
 });
 
 aTopNavMobile.forEach((lien) => {
@@ -163,3 +154,6 @@ aTopNavMobile.forEach((lien) => {
     lien.classList.toggle("display-block");
   });
 });
+accueilOpen.addEventListener("click" , () => {
+  location.reload();
+})

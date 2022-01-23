@@ -102,15 +102,15 @@ img {
     top: 0;
   }
   .topnav.responsive a {
-    color: #ed1414;
     border-radius: 17%;
-    background: #ff000010;
     float: none;
     display: block;
     text-align: right;
   }
 
   .main-navbar {
+    border-radius: 20px;
+    background: #ffffffd1;
     display: flex;
     float: right;
     flex-direction: column;
@@ -532,6 +532,11 @@ footer {
   color: #f00;
   display: none;
 }
+.game-error {
+  font-size: 0.8rem;
+  color: #f00;
+  display: none;
+}
 .city-error {
   font-size: 0.8rem;
   color: #f00;
@@ -612,7 +617,7 @@ footer {
   transform: rotate(-45deg);
 }
 /* topnav mobile */
-.topnav-mobile{
+.topnav-mobile {
   display: none;
 }
 
@@ -691,11 +696,11 @@ footer {
   main {
     margin: 28% 20px 0px;
   }
-  .content{
+  .content {
     margin: 32% auto 2%;
   }
   /* topnav mobile */
-  .topnav-mobile{
+  .topnav-mobile {
     padding: 0px 14%;
     display: block;
     min-width: 229px;
@@ -706,16 +711,19 @@ footer {
     justify-content: space-between;
     align-items: baseline;
   }
-  .header-logo-mobile{
+  .header-logo-mobile {
     float: left;
     height: 41px;
     display: flex;
     align-items: center;
   }
-  .header-logo-mobile img{
+  .header-logo-mobile img {
     height: 22px;
   }
-  .main-navbar-mobile{
+  .main-navbar-mobile {
+    z-index: 12;
+    border-radius: 20px;
+    background: #ffffffd1;
     display: flex;
     float: right;
     flex-direction: column;
@@ -729,29 +737,29 @@ footer {
     float: right;
     display: block;
   }
-  .lien-mobile{
-    color: #ed1414;
-    border-radius: 17%;
-    background: #ff000010;
+  .lien-mobile {
+    font-weight: 100;
+    color: black;
     float: none;
     text-align: right;
     z-index: 9;
     float: left;
-    display: none; 
+    display: none;
     padding: 12px 7px;
     margin: 5px;
     text-decoration: none;
-    font-size: 13px;
-    font-family: Roboto, sans-serif;
-}
-  #icon-mobile{
+    font-size: 15px;
+  }
+  #icon-mobile {
     cursor: pointer;
   }
-  .display-block{
-    display: block;
-  }
 }
-
+.display-block {
+  display: block;
+}
+.display-none {
+  display: none;
+}
 @keyframes modalopen {
   from {
     opacity: 0;
